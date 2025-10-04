@@ -5,120 +5,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <!-- Головний контейнер для ігрового поля (score_container).
+         Використовується LinearLayout з горизонтальною орієнтацією для розміщення двох команд поруч. -->
     <LinearLayout
+        android:id="@+id/score_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <!-- Контейнер для Команди А (Україна). Займає 50% доступної ширини (layout_weight="1"). -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <!-- Назва команди А: "УКРАЇНА" -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:padding="16dp"
-                android:text="Україна"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:padding="8dp"
+                android:text="УКРАЇНА"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
+
+            <!-- Поле для відображення рахунку команди А. Великий шрифт для максимальної видимості. -->
             <TextView
                 android:id="@+id/team_a_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:paddingBottom="24dp"
+                android:paddingBottom="32dp"
                 android:text="0"
-                android:textColor="#000000"
-                android:textSize="56sp" />
+                android:textColor="?attr/colorPrimary"
+                android:textSize="96sp" />
+
+            <!-- Кнопка: +3 Очки для Команди А (стиль TonalButton з Material 3) -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="+3 Очки"
-                android:onClick="addThreeForTeamA"/>
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="+3 ОЧКИ"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addThreeForTeamA"
+                tools:ignore="UsingOnClickInXml" />
+
+            <!-- Кнопка: +2 Очки для Команди А -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="+2 Очки"
-                android:onClick="addTwoForTeamA"/>
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="+2 ОЧКИ"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addTwoForTeamA"
+                tools:ignore="UsingOnClickInXml" />
+
+            <!-- Кнопка: +1 Очко (Вільний кидок) для Команди А -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="Вільний кидок"
-                android:onClick="addOneForTeamA"/>
+                android:text="ВІЛЬНИЙ КИДОК"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addOneForTeamA"
+                tools:ignore="UsingOnClickInXml" />
         </LinearLayout>
+
+        <!-- Вертикальний роздільник. Використовує колір, визначений у темі (?attr/colorOutline). -->
         <View
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/darker_gray" />
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="?attr/colorOutline" />
+
+        <!-- Контейнер для Команди В (Іспанія). Займає 50% доступної ширини. -->
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
+            <!-- Назва команди В: "ІСПАНІЯ" -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:padding="16dp"
-                android:text="Іспанія"
-                android:textColor="#616161"
-                android:textSize="14sp" />
+                android:padding="8dp"
+                android:text="ІСПАНІЯ"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
+
+            <!-- Поле для відображення рахунку команди В. Колір відрізняється (?attr/colorSecondary). -->
             <TextView
                 android:id="@+id/team_b_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:paddingBottom="24dp"
+                android:paddingBottom="32dp"
                 android:text="0"
-                android:textColor="#000000"
-                android:textSize="56sp" />
+                android:textColor="?attr/colorSecondary"
+                android:textSize="96sp" />
+
+            <!-- Кнопка: +3 Очки для Команди В -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="+3 Очки"
-                android:onClick="addThreeForTeamB"/>
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="+3 ОЧКИ"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addThreeForTeamB"
+                tools:ignore="UsingOnClickInXml" />
+
+            <!-- Кнопка: +2 Очки для Команди В -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="+2 Очки"
-                android:onClick="addTwoForTeamB"/>
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="+2 ОЧКИ"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addTwoForTeamB"
+                tools:ignore="UsingOnClickInXml" />
+
+            <!-- Кнопка: +1 Очко (Вільний кидок) для Команди В -->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:text="Вільний кидок"
-                android:onClick="addOneForTeamB"/>
+                android:text="ВІЛЬНИЙ КИДОК"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:onClick="addOneForTeamB"
+                tools:ignore="UsingOnClickInXml" />
         </LinearLayout>
     </LinearLayout>
-    <Button
+
+    <!-- Кнопка скидання рахунку. Розміщена внизу по центру відносно батьківського RelativeLayout. -->
+    <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:text="оновити"
-        android:onClick="resetScore"/>
+        android:text="Скинути рахунок"
+        android:onClick="resetScore"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        tools:ignore="UsingOnClickInXml" />
+
 </RelativeLayout>
